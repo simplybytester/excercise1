@@ -1,10 +1,8 @@
-name: Lint
+name: Testing project
 on: push
 jobs:
-  run-linters:
-    name: Run linters
+  lint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
@@ -15,7 +13,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
 
   test:
-    needs: Lint
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: get code
