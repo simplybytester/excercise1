@@ -1,4 +1,4 @@
-name: Test Project
+name: Lint
 on: push
 jobs:
   run-linters:
@@ -13,23 +13,22 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           github_token: ${{ secrets.github_token }}
-name: Lint
-on: push
-jobs:
-  test: 
+
+  test:
+    needs: Lint
     runs-on: ubuntu-latest
     steps:
       - name: get code
         uses: actions/checkout@v3
       - name: install NodeJS
         uses: actions/setup-node@v3
-        with: 
+        with:
           node-version: 18
       - name: install dependencies
         run: npm ci
       - name: run tests
         run: npm test
-  deploy: 
+  deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
