@@ -1,6 +1,5 @@
 name: Test Project 2
-on: issue_comment
-types: [created, deleted]
+on: issue
 jobs:
   info:
     runs-on: ubuntu-latest
