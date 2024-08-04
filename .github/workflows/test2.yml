@@ -1,5 +1,5 @@
 name: Test Project 2
-on: issue
+on: issues
 jobs:
   info:
     runs-on: ubuntu-latest
